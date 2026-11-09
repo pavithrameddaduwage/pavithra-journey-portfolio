@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --figma-bg: #18181b;
+  --figma-canvas-dot: rgba(255, 255, 255, 0.12);
+  --figma-toolbar: #27272a;
+  --figma-panel: #202023;
+  --figma-card: #141417;
+  --figma-card-inner: #1a1a1f;
+  --figma-border: #3f3f46;
+  --figma-text: #ffffff;
+  --figma-text-muted: #a1a1aa;
+  --figma-blue: #0d99ff;
+  --figma-hover: #333338;
+}
+
+.light-workspace {
+  --figma-bg: #f4f4f5;
+  --figma-canvas-dot: rgba(0, 0, 0, 0.14);
+  --figma-toolbar: #ffffff;
+  --figma-panel: #ffffff;
+  --figma-card: #ffffff;
+  --figma-card-inner: #f8fafc;
+  --figma-border: #e2e8f0;
+  --figma-text: #0f172a;
+  --figma-text-muted: #64748b;
+  --figma-blue: #0d99ff;
+  --figma-hover: #f1f5f9;
+}
+
+html, body {
+  background-color: var(--figma-bg);
+  color: var(--figma-text);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  user-select: none;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Authentic Figma Infinite Dot Grid Canvas */
+.figma-canvas-grid {
+  background-color: var(--figma-bg);
+  background-image: radial-gradient(var(--figma-canvas-dot) 1.2px, transparent 1.2px);
+  background-size: 20px 20px;
+}
+
+/* Figma Frame Card Container */
+.figma-frame-card {
+  background-color: var(--figma-card);
+  color: var(--figma-text);
+  border: 1px solid var(--figma-border);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.4);
+}
+
+.light-workspace .figma-frame-card {
+  box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.08);
+}
+
+/* Selection Box (Figma Blue outline with 8 resize handles) */
+.figma-selected {
+  outline: 2px solid var(--figma-blue) !important;
+  outline-offset: 2px;
+}
+
+/* Resize Handles */
+.figma-handle {
+  width: 7px;
+  height: 7px;
+  background-color: #ffffff;
+  border: 1.5px solid var(--figma-blue);
+  position: absolute;
+  z-index: 30;
+}
+
+/* Red Measurement Dimension Line */
+.measurement-badge {
+  background-color: #f24e1e;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 26;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Animated Flow Dashes for Systematics Schematic Connectors */
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
+.schematic-wire {
+  stroke-dasharray: 6 4;
+  animation: dash-flow 1.4s linear infinite;
+}
+
+/* Dragging Ghost / Drop target */
+.figma-droppable-active {
+  outline: 2px dashed var(--figma-blue) !important;
+  outline-offset: 4px;
+  background-color: rgba(13, 153, 255, 0.08) !important;
+}
+
+/* Figma Native Dialog Backdrop */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+}
+
+/* Minimal Figma Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.45);
+}
